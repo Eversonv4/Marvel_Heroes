@@ -1,18 +1,11 @@
 import { createGlobalStyle } from "styled-components";
+import MarvelFont from "src/assets/fonts/MarvelRegular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
-
-   @import url("https://fonts.googleapis.com/css2?family=Marvel:wght@400;700&family=Manrope:wght@200;300;400;500;700&family=Oswald:wght@200;300;400;500;700&display=swap");
-
-   @font-face {
-      font-family: "Manrope", "Oswald", "Marvel", sans-serif;
-      font-display: swap;
-   }
-
-   @font-face {
-    font-family: 'marvel_regular';
-    src: url("src/assets/fonts/marvel_regular.ttf");
-}
+    @font-face {
+        font-family: 'marvel-regular';
+        src: local('marvel-regular'), url(${MarvelFont}) format('truetype');
+    }
 
    * {
       margin: 0;
@@ -35,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    body {
-      font-family: "marvel_regular"
+      font-family: "Oswald";
    }
 
    cursor: pointer;
