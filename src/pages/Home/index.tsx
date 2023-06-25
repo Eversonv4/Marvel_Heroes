@@ -1,4 +1,10 @@
-import { Header, SearchContainer, SearchContainerLayout } from "./styles";
+import {
+  CardsContainer,
+  CardsContainerLayout,
+  Header,
+  SearchContainer,
+  SearchContainerLayout,
+} from "./styles";
 import { FiSearch } from "react-icons/fi";
 
 export function Home() {
@@ -16,10 +22,14 @@ export function Home() {
           </button>
         </SearchContainerLayout>
       </SearchContainer>
-      <h1>HAHHH SÓ FUNCIONA COM LETRAS MAIÚSCULAS</h1>
-      <div>
-        <h1>HI</h1>
-      </div>
+      <CardsContainer>
+        <CardsContainerLayout>
+          <h1>HAHHH SÓ FUNCIONA COM LETRAS MAIÚSCULAS</h1>
+          <div>
+            <h1>HI</h1>
+          </div>
+        </CardsContainerLayout>
+      </CardsContainer>
     </>
   );
 }

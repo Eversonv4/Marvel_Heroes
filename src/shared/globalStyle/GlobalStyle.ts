@@ -1,11 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import MarvelFont from "src/assets/fonts/MarvelRegular.ttf";
 
 export const GlobalStyle = createGlobalStyle`
-    @font-face {
-        font-family: 'marvel-regular';
-        src: local('marvel-regular'), url(${MarvelFont}) format('truetype');
-    }
 
    * {
       margin: 0;

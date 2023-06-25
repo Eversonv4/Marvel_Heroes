@@ -1,12 +1,14 @@
 import styled from "styled-components";
+import BgHeader from "src/assets/images/bg-yellow-red.jpg";
+import BgBody from "src/assets/images/bg-square.jpg";
 
 export const Header = styled.header`
-  background-image: url("src/assets/images/bg-yellow-red.jpg");
-  background-position: left;
+  background-image: url(${BgHeader});
+  background-position: center;
   background-size: cover;
 
   & > h1 {
-    padding: 30px 0;
+    padding: 31px 0;
     text-align: center;
     color: #ffffff;
     text-shadow: 2px 2px #000000;
@@ -64,4 +66,20 @@ export const SearchContainerLayout = styled.div`
       margin-left: 5px;
     }
   }
+`;
+
+export const CardsContainer = styled.main`
+  background-image: url(${BgBody});
+  background-position: left;
+  background-size: cover;
+`;
+
+export const CardsContainerLayout = styled.div`
+  background-color: rgba(34, 34, 34, 0.7);
+
+  max-width: 1200px;
+  height: calc(100vh - 200px);
+  margin: 0 auto;
+
+  color: #ffffff;
 `;

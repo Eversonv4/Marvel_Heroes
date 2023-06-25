@@ -1,7 +1,7 @@
 import api from "src/shared/services/axios.config";
 
-const api_key = import.meta.env.VITE_API_KEY;
-const api_hash = import.meta.env.VITE_API_HASH;
+const api_key = process.env.REACT_APP_API_KEY;
+const api_hash = process.env.REACT_APP_API_HASH;
 const auth_url = `ts=1&apikey=${api_key}&hash=${api_hash}`;
 
 export async function getAllCharacters() {
