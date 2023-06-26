@@ -30,7 +30,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    // getHighlightHeroes();
+    getHighlightHeroes();
   }, []);
   return (
     <>

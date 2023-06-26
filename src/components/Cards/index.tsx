@@ -1,4 +1,3 @@
-import DefaultImage from "src/assets/images/beast.jpg";
 import { CardContainer } from "./styles";
 import { Link } from "react-router-dom";
 import { ICharacterProps } from "src/@types/interfaces";

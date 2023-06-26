@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { Cards } from "../Cards";
 import { ListContainer } from "./styles";
-import { CardsListProps, ICharacterProps } from "src/@types/interfaces";
+import { CardsListProps } from "src/@types/interfaces";
 
 export function CardsList({ charactersHighlight }: CardsListProps) {
   return (
