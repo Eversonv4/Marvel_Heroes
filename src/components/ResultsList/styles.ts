@@ -19,12 +19,12 @@ export const ResultsListContainer = styled.ul`
   border-radius: 6px;
   overflow: hidden;
 
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.primaryLight};
 
   animation: ${growdown} 0.3s ease-out;
 
   & > p {
-    color: #777777;
+    color: ${({ theme }) => theme.colors.thirdDarkLight};
     font-family: "Manrope";
     font-weight: 400;
     font-size: 18px;
@@ -34,23 +34,23 @@ export const ResultsListContainer = styled.ul`
 `;
 
 export const ResultItem = styled.li`
-  color: #222222;
+  color: ${({ theme }) => theme.colors.secondDark};
   font-family: "Manrope";
   font-weight: 600;
   font-size: 18px;
 
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.primaryLight};
 
   padding: 5px 15px;
 
   cursor: pointer;
 
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderLight};
   :last-child {
     border-bottom: none;
   }
 
   :hover {
-    background-color: #f5f5f5;
+    background-color: ${({ theme }) => theme.colors.borderBgLight};
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.li`
-  max-width: 209px;
+  width: 209px;
   height: 263px;
 
   cursor: pointer;
@@ -9,13 +9,14 @@ export const CardContainer = styled.li`
 
   border-radius: 6px;
 
-  background-color: #22222266;
-  box-shadow: 0px 0px 6px #ffffff;
+  background-color: ${({ theme }) => theme.colors.secondDark + "66"};
+  box-shadow: 0px 0px 6px ${({ theme }) => theme.colors.primaryLight};
+
+  transition: 0.3s ease-in;
 
   :hover {
-    & > img {
-      transform: scale(1.125);
-    }
+    box-shadow: 0px 0px 10px ${({ theme }) => theme.colors.primaryLight};
+    transform: scale(1.1);
   }
 
   position: relative;
@@ -28,6 +29,7 @@ export const CardContainer = styled.li`
   }
 
   & > h3 {
+    font-size: 16px;
     padding: 16px 5px 6px;
     text-align: center;
 

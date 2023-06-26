@@ -31,8 +31,8 @@ export const Header = styled.header`
 
   & > h1 {
     text-align: center;
-    color: #ffffff;
-    text-shadow: 4px 3px #000000;
+    color: ${({ theme }) => theme.colors.primaryLight};
+    text-shadow: 4px 3px ${({ theme }) => theme.colors.black};
 
     font-size: 100px;
     background-color: rgba(34, 34, 34, 0.1);
@@ -42,8 +42,8 @@ export const Header = styled.header`
 `;
 
 export const SearchContainer = styled.div`
-  background-color: #222222;
-  color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.secondDark};
+  color: ${({ theme }) => theme.colors.primaryLight};
 `;
 
 export const SearchContainerLayout = styled.div`
@@ -81,11 +81,11 @@ export const SearchContainerLayout = styled.div`
     align-items: inherit;
 
     border-radius: 4px;
-    border: 2px solid #ffffff;
+    border: 2px solid ${({ theme }) => theme.colors.primaryLight};
     margin-left: 10px;
 
-    background-color: #222222;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.secondDark};
+    color: ${({ theme }) => theme.colors.primaryLight};
 
     font-family: "Oswald";
 
@@ -94,7 +94,7 @@ export const SearchContainerLayout = styled.div`
     transition: 0.4s ease-in-out;
 
     :hover {
-      background-color: #979797;
+      background-color: ${({ theme }) => theme.colors.btnHoverDark};
     }
 
     & > h2 {
@@ -123,14 +123,14 @@ export const CardsContainerLayout = styled.div`
   overflow: auto;
   margin: 0 auto;
 
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.primaryLight};
 
   animation: ${slideBottom} 0.8s ease-in;
 `;
 
 export const FooterContainer = styled.footer`
-  background-color: #222222;
-  color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.secondDark};
+  color: ${({ theme }) => theme.colors.primaryLight};
 
   text-align: center;
 
@@ -141,6 +141,6 @@ export const TitleHighlight = styled.h2`
   text-align: center;
   font-weight: normal;
   font-size: 32px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.primaryLight};
   margin-bottom: 20px;
 `;

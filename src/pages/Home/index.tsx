@@ -13,6 +13,7 @@ import { ResultsList } from "src/components/ResultsList";
 import { useEffect, useState } from "react";
 import { getAllCharacters } from "src/shared/utils/fetch_api";
 import { ICharacterProps } from "src/@types/interfaces";
+import { LoaderContainer } from "src/components/LoadAnimation/styles";
 
 export function Home() {
   const [showResults, setShowResults] = useState(false);
@@ -54,6 +55,7 @@ export function Home() {
       <CardsContainer>
         <CardsContainerLayout>
           <TitleHighlight>DESTAQUES</TitleHighlight>
+          {charactersHighlight.length === 0 && <LoaderContainer />}
           <CardsList charactersHighlight={charactersHighlight} />
           {/* Fazer Paginação */}
         </CardsContainerLayout>

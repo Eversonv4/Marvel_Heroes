@@ -1,7 +1,5 @@
+import { LoaderContainer } from "./styles";
+
 export function LoadAnimation() {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
+  return <LoaderContainer />;
 }
