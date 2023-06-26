@@ -19,16 +19,14 @@ export function ResultsList({
           {charactersDataList.map((char) => (
             <Link to={`/character/${char?.id}`} key={char?.id}>
               <ResultItem>
-                {char && (
-                  <>
-                    <h3>{char?.name}</h3>
-                    <picture>
-                      <img
-                        src={`${char?.thumbnail?.path}.${char?.thumbnail?.extension}`}
-                        alt={char?.name}
-                      />
-                    </picture>
-                  </>
+                <h3>{char?.name}</h3>
+                {char?.thumbnail && (
+                  <picture>
+                    <img
+                      src={`${char?.thumbnail?.path}.${char?.thumbnail?.extension}`}
+                      alt={char?.name}
+                    />
+                  </picture>
                 )}
               </ResultItem>
             </Link>
