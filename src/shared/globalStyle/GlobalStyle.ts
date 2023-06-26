@@ -8,6 +8,20 @@ export const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
    }
 
+   *::-webkit-scrollbar {
+      width: 5px;
+   }
+
+   *::-webkit-scrollbar-track {
+      background-color: #dfdfdf;
+      border-radius: 50px;
+   }
+
+   *::-webkit-scrollbar-thumb {
+      background-color: #222222;
+      border-radius: 50px;
+   }
+
    html {
       scroll-behavior: smooth;
    }
@@ -20,10 +34,16 @@ export const GlobalStyle = createGlobalStyle`
 
    a {
       text-decoration: none;
+      color: inherit;
+      background-color: inherit;
    }
 
    body {
       font-family: "Oswald";
+   }
+
+   button {
+      cursor: pointer;
    }
 
    cursor: pointer;

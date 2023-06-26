@@ -7,7 +7,7 @@ function MainRoutes() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<DetailCharacter />} />
+        <Route path="/character/:id" element={<DetailCharacter />} />
       </Routes>
     </Router>
   );

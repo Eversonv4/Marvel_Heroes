@@ -1,13 +1,36 @@
+import { CardsList } from "src/components/CardsList";
 import {
   CardsContainer,
   CardsContainerLayout,
+  FooterContainer,
   Header,
   SearchContainer,
   SearchContainerLayout,
+  TitleHighlight,
 } from "./styles";
 import { FiSearch } from "react-icons/fi";
+import { ResultsList } from "src/components/ResultsList";
+import { useEffect, useState } from "react";
+import { getAllCharacters } from "src/shared/utils/fetch_api";
+import { ICharacterProps } from "src/@types/interfaces";
 
 export function Home() {
+  const [showResults, setShowResults] = useState(false);
+  const [charactersHighlight, setCharactersHighlight] = useState<
+    ICharacterProps[]
+  >([]);
+
+  async function getHighlightHeroes() {
+    const { data } = await getAllCharacters(10, 0);
+    if (data?.results.length === 0) {
+      setCharactersHighlight([]);
+    }
+    data?.results && setCharactersHighlight(data?.results);
+  }
+
+  useEffect(() => {
+    // getHighlightHeroes();
+  }, []);
   return (
     <>
       <Header>
@@ -15,21 +38,29 @@ export function Home() {
       </Header>
       <SearchContainer>
         <SearchContainerLayout>
-          <input type="text" placeholder="Buscar herói..." />
+          <input
+            type="text"
+            placeholder="Buscar herói..."
+            onFocus={() => setShowResults(true)}
+            onBlur={() => setShowResults(false)}
+          />
           <button>
             <FiSearch size={28} color="#FFFFFF" />
             <h2>Buscar</h2>
           </button>
+          {showResults && <ResultsList />}
         </SearchContainerLayout>
       </SearchContainer>
       <CardsContainer>
         <CardsContainerLayout>
-          <h1>HAHHH SÓ FUNCIONA COM LETRAS MAIÚSCULAS</h1>
-          <div>
-            <h1>HI</h1>
-          </div>
+          <TitleHighlight>DESTAQUES</TitleHighlight>
+          <CardsList charactersHighlight={charactersHighlight} />
+          {/* Fazer Paginação */}
         </CardsContainerLayout>
       </CardsContainer>
+      <FooterContainer>
+        <span>Everson Soares &copy; {new Date().getFullYear()}</span>
+      </FooterContainer>
     </>
   );
 }

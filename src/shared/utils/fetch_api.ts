@@ -4,14 +4,14 @@ const api_key = process.env.REACT_APP_API_KEY;
 const api_hash = process.env.REACT_APP_API_HASH;
 const auth_url = `ts=1&apikey=${api_key}&hash=${api_hash}`;
 
-export async function getAllCharacters() {
+export async function getAllCharacters(limit: number, offset: number) {
   try {
     const { data } = await api.get(
-      "characters?" + auth_url + "&limit=100&offset=1200"
+      "characters?" + auth_url + `&limit=${limit}&offset=${offset}`
     );
-    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 
