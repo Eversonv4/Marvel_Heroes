@@ -8,6 +8,11 @@ export function ResultsList({
   charactersDataList,
   isLoading,
 }: ICardsListProps) {
+  function formattedUrlImage(url: string) {
+    const [, urlSplitted] = url.split("http");
+    return "https" + urlSplitted;
+  }
+
   useEffect(() => {}, [charactersDataList, isLoading]);
   return (
     <ResultsListContainer>
@@ -23,7 +28,9 @@ export function ResultsList({
                 {char?.thumbnail && (
                   <picture>
                     <img
-                      src={`${char?.thumbnail?.path}.${char?.thumbnail?.extension}`}
+                      src={`${formattedUrlImage(char?.thumbnail?.path)}.${
+                        char?.thumbnail?.extension
+                      }`}
                       alt={char?.name}
                     />
                   </picture>
