@@ -2,8 +2,6 @@ import { CardsList } from "src/components/CardsList";
 import {
   CardsContainer,
   CardsContainerLayout,
-  FooterContainer,
-  Header,
   SearchContainer,
   SearchContainerLayout,
   TitleHighlight,
@@ -11,15 +9,26 @@ import {
 import { FiSearch } from "react-icons/fi";
 import { ResultsList } from "src/components/ResultsList";
 import { useEffect, useState } from "react";
-import { getAllCharacters } from "src/shared/utils/fetch_api";
+import {
+  getAllCharacters,
+  getCharacterByName,
+} from "src/shared/utils/fetch_api";
 import { ICharacterProps } from "src/@types/interfaces";
-import { LoaderContainer } from "src/components/LoadAnimation/styles";
+import { LoadAnimation } from "src/components/LoadAnimation";
+import { Header } from "src/components/Header";
+import { Footer } from "src/components/Footer";
 
 export function Home() {
   const [showResults, setShowResults] = useState(false);
+  const [showLoaderAnimation, setShowLoaderAnimation] = useState(true);
+  const [showLoadingRestultList, setShowLoadingRestultList] = useState(false);
   const [charactersHighlight, setCharactersHighlight] = useState<
     ICharacterProps[]
   >([]);
+  const [charsResultSearch, setCharsResultSearch] = useState<ICharacterProps[]>(
+    []
+  );
+  const [heroNameInput, setHeroNameInput] = useState("");
 
   async function getHighlightHeroes() {
     const { data } = await getAllCharacters(10, 0);
@@ -27,6 +36,20 @@ export function Home() {
       setCharactersHighlight([]);
     }
     data?.results && setCharactersHighlight(data?.results);
+    setShowLoaderAnimation(false);
+  }
+
+  async function getHeroesByName() {
+    setShowLoadingRestultList(true);
+    const data = await getCharacterByName(heroNameInput);
+    const results = data?.data?.results;
+    if (!results) {
+      setCharsResultSearch([]);
+      setShowLoadingRestultList(false);
+      return;
+    }
+    results && setCharsResultSearch(results);
+    setShowLoadingRestultList(false);
   }
 
   useEffect(() => {
@@ -34,35 +57,41 @@ export function Home() {
   }, []);
   return (
     <>
-      <Header>
-        <h1>MARVEL HEROES</h1>
-      </Header>
+      <Header onClick={() => setShowResults(false)} />
       <SearchContainer>
         <SearchContainerLayout>
           <input
             type="text"
             placeholder="Buscar herói..."
             onFocus={() => setShowResults(true)}
-            onBlur={() => setShowResults(false)}
+            onChange={(e) => setHeroNameInput(e.target.value)}
+            onKeyDown={getHeroesByName}
           />
-          <button>
+          <button onClick={getHeroesByName}>
             <FiSearch size={28} color="#FFFFFF" />
             <h2>Buscar</h2>
           </button>
-          {showResults && <ResultsList />}
+          {showResults && (
+            <>
+              <ResultsList
+                charactersDataList={charsResultSearch ?? []}
+                isLoading={showLoadingRestultList}
+              />
+            </>
+          )}
         </SearchContainerLayout>
       </SearchContainer>
-      <CardsContainer>
+      <CardsContainer onBlur={() => setShowResults(false)}>
         <CardsContainerLayout>
           <TitleHighlight>DESTAQUES</TitleHighlight>
-          {charactersHighlight.length === 0 && <LoaderContainer />}
-          <CardsList charactersHighlight={charactersHighlight} />
+          {showLoaderAnimation && <LoadAnimation />}
+          {showLoaderAnimation === false &&
+            charactersHighlight.length === 0 && <p>(Vazio)</p>}
+          <CardsList charactersDataList={charactersHighlight} />
           {/* Fazer Paginação */}
         </CardsContainerLayout>
       </CardsContainer>
-      <FooterContainer>
-        <span>Everson Soares &copy; {new Date().getFullYear()}</span>
-      </FooterContainer>
+      <Footer onClick={() => setShowResults(false)} />
     </>
   );
 }

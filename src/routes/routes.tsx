@@ -8,6 +8,7 @@ function MainRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character/:id" element={<DetailCharacter />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   );

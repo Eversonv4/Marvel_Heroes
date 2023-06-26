@@ -10,27 +10,29 @@ export async function getAllCharacters(limit: number, offset: number) {
       "characters?" + auth_url + `&limit=${limit}&offset=${offset}`
     );
     return data;
-  } catch (error) {
-    throw error;
-  }
+  } catch (error) {}
 }
 
-export async function getCharacterById(charId: number) {
+export async function getCharacterById(charId: string) {
   try {
-    const { data } = await api.get(`characters/${charId}?` + auth_url);
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
+    const charData = await api.get(`characters/${charId}?` + auth_url);
+    const comicsData = await api.get(
+      `characters/${charId}/comics?` + auth_url + `&limit=10&offset=0`
+    );
+
+    const character = charData?.data?.data?.results;
+    const comics = comicsData?.data?.data?.results;
+    return { character, comics };
+  } catch (error) {}
 }
 
 export async function getCharacterByName(charName: string) {
+  if (charName.length < 1) return;
+
   try {
     const { data } = await api.get(
       `characters?nameStartsWith=${charName}&` + auth_url
     );
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
+    return data;
+  } catch (error) {}
 }

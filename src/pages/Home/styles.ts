@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import BgHeader from "src/assets/images/bg-yellow-red.jpg";
+
 import BgBody from "src/assets/images/bg-square.jpg";
 
 const slideBottom = keyframes`
@@ -21,23 +21,6 @@ const openWide = keyframes`
   to {
     opacity: 1;
     width: 1200px;
-  }
-`;
-
-export const Header = styled.header`
-  background-image: url(${BgHeader});
-  background-position: center;
-  background-size: cover;
-
-  & > h1 {
-    text-align: center;
-    color: ${({ theme }) => theme.colors.primaryLight};
-    text-shadow: 4px 3px ${({ theme }) => theme.colors.black};
-
-    font-size: 100px;
-    background-color: rgba(34, 34, 34, 0.1);
-
-    animation: ${slideBottom} 0.8s ease-in;
   }
 `;
 
@@ -65,7 +48,7 @@ export const SearchContainerLayout = styled.div`
     outline: none;
     font-size: 22px;
     line-height: 26px;
-    font-family: "Manrope";
+    font-family: ${({ theme }) => theme.fonts.manrope};
 
     width: 100%;
     max-width: 400px;
@@ -87,7 +70,7 @@ export const SearchContainerLayout = styled.div`
     background-color: ${({ theme }) => theme.colors.secondDark};
     color: ${({ theme }) => theme.colors.primaryLight};
 
-    font-family: "Oswald";
+    font-family: ${({ theme }) => theme.fonts.oswald};
 
     padding: 7px;
 
@@ -126,15 +109,14 @@ export const CardsContainerLayout = styled.div`
   color: ${({ theme }) => theme.colors.primaryLight};
 
   animation: ${slideBottom} 0.8s ease-in;
-`;
 
-export const FooterContainer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.secondDark};
-  color: ${({ theme }) => theme.colors.primaryLight};
-
-  text-align: center;
-
-  padding: 15px 0;
+  & > p {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: ${({ theme }) => theme.fonts.manrope};
+    text-align: center;
+    margin-top: 30px;
+  }
 `;
 
 export const TitleHighlight = styled.h2`

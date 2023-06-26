@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
       text-decoration: none;
       color: inherit;
       background-color: inherit;
+      width: fit-content;
    }
 
    body {

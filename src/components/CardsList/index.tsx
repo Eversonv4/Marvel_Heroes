@@ -1,12 +1,12 @@
 import { Cards } from "../Cards";
 import { ListContainer } from "./styles";
-import { CardsListProps } from "src/@types/interfaces";
+import { ICardsListProps } from "src/@types/interfaces";
 
-export function CardsList({ charactersHighlight }: CardsListProps) {
+export function CardsList({ charactersDataList }: ICardsListProps) {
   return (
     <ListContainer>
-      {charactersHighlight.length > 0 &&
-        charactersHighlight.map((char) => {
+      {charactersDataList.length > 0 &&
+        charactersDataList.map((char) => {
           return (
             <Cards
               id={char?.id}
