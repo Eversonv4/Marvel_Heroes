@@ -66,14 +66,19 @@ export function DetailCharacter() {
 
               <DescriptionContainer>
                 <h2>{heroData?.character[0]?.name}</h2>
-                <p>{heroData?.character[0]?.description}</p>
-                <a
-                  href={heroData?.character[0]?.urls[2].url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <button>Veja Mais</button>
-                </a>
+                <p>
+                  {heroData?.character[0]?.description || "(Sem Descrição)"}
+                </p>
+
+                {heroData?.character && (
+                  <a
+                    href={heroData?.character[0]?.urls[2]?.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button>Veja Mais</button>
+                  </a>
+                )}
               </DescriptionContainer>
               <ComicsContainer>
                 <h3>Principais HQs</h3>

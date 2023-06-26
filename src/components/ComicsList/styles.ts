@@ -5,6 +5,8 @@ export const ContainerList = styled.ul`
   display: flex;
   justify-content: flex-start;
   gap: 30px;
+
+  width: 100%;
 `;
 
 export const ComicsItem = styled.li`
@@ -28,4 +30,9 @@ export const ComicsItem = styled.li`
       }
     }
   }
+`;
+
+export const ErrorMessage = styled.h4`
+  font-weight: 400;
+  margin: 0 auto;
 `;

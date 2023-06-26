@@ -70,6 +70,7 @@ export const DescriptionContainer = styled.section`
   max-height: 400px;
   max-width: 700px;
   height: 100%;
+  width: 100%;
 
   background-color: rgba(34, 34, 34, 0.4);
   padding: 20px;
@@ -118,6 +119,8 @@ export const ComicsContainer = styled.div`
   font-size: 18px;
 
   margin-top: -50px;
+
+  width: 100%;
 `;
 
 export const ErrorMessage = styled.h2`
