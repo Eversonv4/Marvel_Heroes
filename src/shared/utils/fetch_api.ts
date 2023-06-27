@@ -5,9 +5,10 @@ const api_hash = process.env.REACT_APP_API_HASH;
 const auth_url = `ts=1&apikey=${api_key}&hash=${api_hash}`;
 
 export async function getAllCharacters(limit: number, offset: number) {
+  const skip = offset * limit;
   try {
     const { data } = await api.get(
-      "characters?" + auth_url + `&limit=${limit}&offset=${offset}`
+      "characters?" + auth_url + `&limit=${limit}&offset=${skip}`
     );
     return data;
   } catch (error) {}

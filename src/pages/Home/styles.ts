@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
-
 import BgBody from "src/assets/images/bg-square.jpg";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const slideBottom = keyframes`
   from {
@@ -100,9 +100,13 @@ export const CardsContainerLayout = styled.div`
 
   padding: 15px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   max-width: 1200px;
   height: calc(100vh - 200px);
-  max-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
   overflow: auto;
   margin: 0 auto;
 
@@ -125,4 +129,48 @@ export const TitleHighlight = styled.h2`
   font-size: 32px;
   color: ${({ theme }) => theme.colors.primaryLight};
   margin-bottom: 20px;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 60px;
+
+  & > button {
+    display: inherit;
+    justify-content: inherit;
+    align-items: center;
+
+    border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primaryLight};
+    margin-left: 20px;
+
+    background-color: ${({ theme }) => theme.colors.secondDark};
+    color: ${({ theme }) => theme.colors.primaryLight};
+
+    font-family: ${({ theme }) => theme.fonts.oswald};
+
+    padding: 7px;
+
+    transition: 0.4s ease-in-out;
+
+    :hover {
+      background-color: ${({ theme }) => theme.colors.btnHoverDark};
+    }
+
+    & > h2 {
+      margin-left: 5px;
+    }
+  }
+`;
+
+export const ArrowLeft = styled(FiArrowLeft)`
+  color: ${({ theme }) => theme.colors.primaryLight};
+  font-size: 26px;
+`;
+
+export const ArrowRight = styled(FiArrowRight)`
+  color: ${({ theme }) => theme.colors.primaryLight};
+  font-size: 26px;
 `;

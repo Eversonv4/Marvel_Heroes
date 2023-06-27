@@ -25,16 +25,19 @@ export function DetailCharacter() {
   );
 
   const [showLoadingPage, setShowLoadingPage] = useState(false);
+  const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
   const [showErrorId, setShowErrorId] = useState(false);
 
   async function getHeroData(id: string) {
     setShowLoadingPage(true);
+    setShowLoadingAnimation(true);
     const response = await getCharacterById(id);
     setHeroData(response!);
     if (!response) {
       setShowErrorId(true);
     }
     setShowLoadingPage(false);
+    setShowLoadingAnimation(false);
   }
 
   useEffect(() => {
@@ -82,7 +85,12 @@ export function DetailCharacter() {
               </DescriptionContainer>
               <ComicsContainer>
                 <h3>Principais HQs</h3>
-                <ComicsList comics={heroData?.comics} />
+
+                {!heroData?.comics && showLoadingAnimation ? (
+                  <LoadAnimation />
+                ) : (
+                  <ComicsList comics={heroData?.comics} />
+                )}
               </ComicsContainer>
             </>
           )}

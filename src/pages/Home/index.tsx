@@ -1,7 +1,10 @@
 import { CardsList } from "src/components/CardsList";
 import {
+  ArrowLeft,
+  ArrowRight,
   CardsContainer,
   CardsContainerLayout,
+  PaginationContainer,
   SearchContainer,
   SearchContainerLayout,
   TitleHighlight,
@@ -22,6 +25,17 @@ export function Home() {
   const [showResults, setShowResults] = useState(false);
   const [showLoaderAnimation, setShowLoaderAnimation] = useState(true);
   const [showLoadingRestultList, setShowLoadingRestultList] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [showBtnPrev, setShowBtnPrev] = useState(false);
+
+  function changeCurrentPageList(type: "increase" | "decrease") {
+    currentPage === 0 && setShowBtnPrev(false);
+    currentPage !== 0 && setShowBtnPrev(true);
+    type === "increase" && setCurrentPage(currentPage + 1);
+    type === "decrease" && setCurrentPage(currentPage - 1);
+  }
+
   const [charactersHighlight, setCharactersHighlight] = useState<
     ICharacterProps[]
   >([]);
@@ -30,8 +44,11 @@ export function Home() {
   );
   const [heroNameInput, setHeroNameInput] = useState("");
 
-  async function getHighlightHeroes() {
-    const { data } = await getAllCharacters(10, 0);
+  async function getHighlightHeroes(page: number) {
+    setShowLoaderAnimation(true);
+    page === 0 && setShowBtnPrev(false);
+    page !== 0 && setShowBtnPrev(true);
+    const { data } = await getAllCharacters(10, page);
     if (data?.results.length === 0) {
       setCharactersHighlight([]);
     }
@@ -43,6 +60,7 @@ export function Home() {
     setShowLoadingRestultList(true);
     const data = await getCharacterByName(heroNameInput);
     const results = data?.data?.results;
+
     if (!results) {
       setCharsResultSearch([]);
       setShowLoadingRestultList(false);
@@ -53,8 +71,8 @@ export function Home() {
   }
 
   useEffect(() => {
-    getHighlightHeroes();
-  }, []);
+    getHighlightHeroes(currentPage);
+  }, [currentPage]);
   return (
     <>
       <Header onClick={() => setShowResults(false)} />
@@ -81,14 +99,29 @@ export function Home() {
           )}
         </SearchContainerLayout>
       </SearchContainer>
-      <CardsContainer onBlur={() => setShowResults(false)}>
+      <CardsContainer onClick={() => setShowResults(false)}>
         <CardsContainerLayout>
           <TitleHighlight>DESTAQUES</TitleHighlight>
           {showLoaderAnimation && <LoadAnimation />}
           {showLoaderAnimation === false &&
             charactersHighlight.length === 0 && <p>(Vazio)</p>}
-          <CardsList charactersDataList={charactersHighlight} />
-          {/* Fazer Paginação */}
+          {!showLoaderAnimation && (
+            <CardsList charactersDataList={charactersHighlight} />
+          )}
+
+          <PaginationContainer>
+            {showBtnPrev && (
+              <button onClick={() => changeCurrentPageList("decrease")}>
+                <ArrowLeft />
+                <h2>Anterior</h2>
+              </button>
+            )}
+
+            <button onClick={() => changeCurrentPageList("increase")}>
+              <h2>Próximo</h2>
+              <ArrowRight />
+            </button>
+          </PaginationContainer>
         </CardsContainerLayout>
       </CardsContainer>
       <Footer onClick={() => setShowResults(false)} />
