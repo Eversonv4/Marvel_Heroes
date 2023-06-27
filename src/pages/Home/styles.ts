@@ -84,6 +84,30 @@ export const SearchContainerLayout = styled.div`
       margin-left: 5px;
     }
   }
+
+  @media (max-width: 720px) {
+    & > input {
+      max-width: 300px;
+      font-size: 16px;
+      padding: 6px;
+    }
+
+    & > button {
+      padding: 3px;
+
+      & > h2 {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    & > input {
+      max-width: 200px;
+      font-size: 16px;
+      padding: 6px;
+    }
+  }
 `;
 
 export const CardsContainer = styled.main`
@@ -97,7 +121,6 @@ export const CardsContainer = styled.main`
 export const CardsContainerLayout = styled.div`
   background-color: rgba(34, 34, 34, 0.7);
   border-radius: 6px;
-
   padding: 15px;
 
   display: flex;
@@ -129,6 +152,10 @@ export const TitleHighlight = styled.h2`
   font-size: 32px;
   color: ${({ theme }) => theme.colors.primaryLight};
   margin-bottom: 20px;
+
+  @media (max-width: 500px) {
+    font-size: 26px;
+  }
 `;
 
 export const PaginationContainer = styled.div`
@@ -161,6 +188,16 @@ export const PaginationContainer = styled.div`
 
     & > h2 {
       margin-left: 5px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    justify-content: center;
+
+    & > button {
+      :first-child {
+        margin-left: 0;
+      }
     }
   }
 `;

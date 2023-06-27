@@ -25,8 +25,23 @@ export const HeaderContainer = styled.header`
     font-size: 100px;
     background-color: rgba(34, 34, 34, 0.1);
 
+    transition: 0.8s ease-in;
+
     animation: ${slideBottom} 0.8s ease-in;
 
     cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    & > h1 {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 450px) {
+    & > h1 {
+      font-size: 2.8rem;
+      text-shadow: 2px 2px ${({ theme }) => theme.colors.black};
+    }
   }
 `;
