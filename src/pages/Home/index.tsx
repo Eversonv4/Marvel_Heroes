@@ -45,8 +45,6 @@ export function Home() {
   const [heroNameInput, setHeroNameInput] = useState("");
 
   async function getHighlightHeroes(page: number) {
-    const { innerWidth, innerHeight } = window;
-    console.log(console.log(innerWidth));
     setShowLoaderAnimation(true);
     page === 0 && setShowBtnPrev(false);
     page !== 0 && setShowBtnPrev(true);
