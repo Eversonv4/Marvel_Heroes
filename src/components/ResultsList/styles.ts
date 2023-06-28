@@ -24,6 +24,7 @@ export const ResultsListContainer = styled.ul`
   background-color: ${({ theme }) => theme.colors.primaryLight};
 
   animation: ${growdown} 0.3s ease-out;
+  transition: 0.3s ease-in;
 
   & > p {
     color: ${({ theme }) => theme.colors.thirdDarkLight};
@@ -32,6 +33,17 @@ export const ResultsListContainer = styled.ul`
     font-size: 18px;
     padding: 5px 15px;
     font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    max-width: 300px;
+    left: calc(50% - 174px);
+    top: 70px;
+  }
+
+  @media (max-width: 360px) {
+    max-width: 250px;
+    left: calc(50% - 124px);
   }
 `;
 
@@ -71,6 +83,14 @@ export const ResultItem = styled.li`
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  @media (max-width: 360px) {
+    & > h3 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 `;

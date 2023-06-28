@@ -47,8 +47,8 @@ export const DetailsContainerLayout = styled.div`
   animation: ${slideBottom} 0.8s ease-in;
 
   & > figure {
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 300px;
+    max-height: 300px;
 
     & > img {
       width: 100%;
@@ -63,6 +63,12 @@ export const DetailsContainerLayout = styled.div`
         box-shadow: 0px 0px 15px ${({ theme }) => theme.colors.primaryLight};
       }
     }
+  }
+
+  @media (max-width: 1166px) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -82,6 +88,7 @@ export const DescriptionContainer = styled.section`
 
   font-size: 18px;
   font-family: ${({ theme }) => theme.fonts.manrope};
+
   & > h2 {
     font-size: 32px;
   }
@@ -112,6 +119,15 @@ export const DescriptionContainer = styled.section`
       background-color: ${({ theme }) => theme.colors.btnHoverDark + "66"};
     }
   }
+
+  @media (max-width: 1166px) {
+    margin: 0 auto;
+
+    & > a {
+      display: block;
+      margin-top: 30px;
+    }
+  }
 `;
 
 export const ComicsContainer = styled.div`
@@ -121,6 +137,10 @@ export const ComicsContainer = styled.div`
   margin-top: -50px;
 
   width: 100%;
+
+  @media (max-width: 1166px) {
+    margin-top: 0;
+  }
 `;
 
 export const ErrorMessage = styled.h2`

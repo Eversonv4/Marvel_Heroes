@@ -7,17 +7,24 @@ export const ContainerList = styled.ul`
   gap: 30px;
 
   width: 100%;
+
+  @media (max-width: 1166px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const ComicsItem = styled.li`
   & > figure {
     max-width: 200px;
-    max-height: 200px;
+    max-height: 255px;
 
     & > img {
       width: 100%;
       height: 100%;
       max-height: 255px;
+      object-fit: cover;
+      min-width: 167px;
       border-radius: 20px 0 20px;
 
       border: 3px solid ${({ theme }) => theme.colors.black};

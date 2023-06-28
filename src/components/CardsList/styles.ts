@@ -8,7 +8,6 @@ export const ListContainer = styled.ul`
   gap: 30px;
 
   @media (max-width: 360px) {
-    overflow: auto;
     padding: 5px 0;
   }
 `;
